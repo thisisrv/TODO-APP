@@ -6,13 +6,19 @@
 
 <!-- passing todo info to other component todo-item -->
 
-<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
-<br>
-<h4>Your todos</h4>
+<!-- Container class bootstrap to align component-->
+<div class="container">
+    <h1 class="text-center mb-3">Todo List by CodeWithHarry</h1>
 
-<div *ngIf="this.todos.length===0; else elseBlock">No todos to display</div>
-<ng-template #elseBlock>
-    <div *ngFor="let todo of todos; index as i">
-        <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toogleTodo($event)"></app-todo-item>
-    </div>
-</ng-template>
+    <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+    <br>
+    <h4>Your todos</h4>
+
+    <div *ngIf="this.todos.length===0; else elseBlock">No todos to display</div>
+    <ng-template #elseBlock>
+        <div *ngFor="let todo of todos; index as i">
+            <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toogleTodo($event)">
+            </app-todo-item>
+        </div>
+    </ng-template>
+</div>
